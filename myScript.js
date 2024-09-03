@@ -1,10 +1,13 @@
 
 function enter(){
-    var inputGrid = document.getElementById("getNumber").value;
+    let element = document.getElementById("container");
+    element.innerHTML = "";
+    let inputGrid = document.getElementById("getNumber").value;
     inputGrid = Math.floor(inputGrid);
     console.log(inputGrid);
     grid(inputGrid);
     console.log("entrou");
+    
 
 }
 
@@ -15,9 +18,9 @@ document.getElementById("getNumber").addEventListener('keydown', function(event)
 });
 
 function grid(inputGrid){
-    for(let i = 0; i < inputGrid; i++){
+        for(let i = 0; i < inputGrid*inputGrid; i++){
         let newDiv = document.createElement("div");
-        newDiv.className = "div" + i;
-        document.getElementById("c  ontainer").appendChild(newDiv);
+        newDiv.className = "divG " + i;
+        let container = document.getElementById("container").appendChild(newDiv);
     }
 }
