@@ -1,0 +1,11 @@
+#input{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    /* border: 2px red solid; */
+    padding: 30px;
+}
+
+#write-click{
+    padding: 10px;
+}
