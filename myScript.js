@@ -1,6 +1,17 @@
 let inputGrid = 30;
 let currentColor = "#000000";
 
+let isMouseDown = false;
+
+document.addEventListener('mousedown', function() {
+    isMouseDown = true;
+});
+
+document.addEventListener('mouseup', function() {
+    isMouseDown = false;
+});
+
+
 grid(inputGrid);
 
 const colorPicker = document.getElementById('favcolor');
@@ -12,17 +23,21 @@ colorPicker.addEventListener('input', function(){
 
     const elements = document.getElementsByClassName('divD');
     for (let i = 0; i < elements.length; i++) {
-        elements[i].removeEventListener('mouseover', noColor); 
-        elements[i].removeEventListener('mouseover', PickColor); 
+        elements[i].removeEventListener('mouseover', handleMouseOver); 
+        elements[i].addEventListener('mouseover', handleMouseOver);
 
-        if (currentColor === '#000000') {
-            elements[i].addEventListener('mouseover', noColor); 
-        } else {
-            elements[i].addEventListener('mouseover', PickColor); 
-        }
     }
 });
 
+function handleMouseOver(event){
+    if (isMouseDown) {
+        if (currentColor === '#000000') {
+            noColor(event);
+        } else {
+            PickColor(event);
+        }
+    }
+}
 
 
 function enter(){
@@ -54,14 +69,8 @@ function grid(inputGrid){
             newDiv.className = "divD " + y;
             newRow.appendChild(newDiv);
             
-            if (currentColor === '#000000'){
-                newDiv.addEventListener('mouseover', noColor);
-            }
-            else {
-                newDiv.addEventListener('mouseover', PickColor);
-
-            }
-        }
+        newDiv.removeEventListener('mouseover', handleMouseOver); 
+        newDiv.addEventListener('mouseover', handleMouseOver);
 
     }
 }     
@@ -92,7 +101,13 @@ function rainbow(){
     const elements = document.getElementsByClassName('divD');
     
     for (let i = 0; i < elements.length; i++){
-        elements[i].addEventListener('mouseover', changeColor);
+       elements[i].addEventListener('mouseover', function(event){
+    
+            if(isMouseDown){
+                changeColor(event);
+
+            }
+    });
     }
 }
 
