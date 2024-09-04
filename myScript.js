@@ -20,9 +20,10 @@ function grid(inputGrid){
         for(let i = 0; i < inputGrid; i++){
         const newRow = document.createElement("div");
         newRow.className = "divR " + i;
-        let container = document.getElementById("container").appendChild(newRow);
+        document.getElementById("container").appendChild(newRow);
+        
+        
 
-    
 
         for(let y = 0; y < inputGrid; y++){
             console.log("Entrou");
