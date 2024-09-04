@@ -73,6 +73,7 @@ function grid(inputGrid){
         newDiv.addEventListener('mouseover', handleMouseOver);
 
     }
+}
 }     
 
     function changeColor(event){
