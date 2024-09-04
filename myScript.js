@@ -6,7 +6,6 @@ function enter(){
     inputGrid = Math.floor(inputGrid);
     console.log(inputGrid);
     grid(inputGrid);
-    console.log("entrou");
     
 
 }
@@ -18,9 +17,19 @@ document.getElementById("getNumber").addEventListener('keydown', function(event)
 });
 
 function grid(inputGrid){
-        for(let i = 0; i < inputGrid*inputGrid; i++){
-        let newDiv = document.createElement("div");
-        newDiv.className = "divG " + i;
-        let container = document.getElementById("container").appendChild(newDiv);
+        for(let i = 0; i < inputGrid; i++){
+        const newRow = document.createElement("div");
+        newRow.className = "divR " + i;
+        let container = document.getElementById("container").appendChild(newRow);
+
+    
+
+        for(let y = 0; y < inputGrid; y++){
+            console.log("Entrou");
+            const newDiv = document.createElement("div");
+            newDiv.className = "divD " + y;
+            newRow.appendChild(newDiv);
+        }
+
     }
-}
+}     
