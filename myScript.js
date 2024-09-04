@@ -1,5 +1,22 @@
 let inputGrid = 30;
+let currentColor = "#000000";
+
 grid(inputGrid);
+
+const colorPicker = document.getElementById('favcolor');
+
+
+colorPicker.addEventListener('input', function(){
+    currentColor = String(colorPicker.value);
+    console.log(currentColor);  
+    recreateGrid();
+})
+
+function recreateGrid() {
+    document.getElementById('container').innerHTML = "";
+    grid(inputGrid);
+}
+
 
 
 function enter(){
@@ -30,8 +47,14 @@ function grid(inputGrid){
             const newDiv = document.createElement("div");
             newDiv.className = "divD " + y;
             newRow.appendChild(newDiv);
-            newDiv.addEventListener("mouseover", noColor);
+            
+            if (currentColor === '#000000'){
+                newDiv.addEventListener('mouseover', noColor);
+            }
+            else {
+                newDiv.addEventListener('mouseover', PickColor);
 
+            }
         }
 
     }
@@ -51,6 +74,7 @@ function grid(inputGrid){
 
  function noColor(event){
     event.target.style.backgroundColor = "black";
+
     const styles = window.getComputedStyle(event.target);
     let boxOpacity = parseFloat(styles.getPropertyValue("opacity"));
     boxOpacity += 0.3;
@@ -75,3 +99,8 @@ function clear(){
 }
 
 document.getElementById("btn 3").addEventListener('click', clear);
+
+function PickColor(event){
+    event.target.style.backgroundColor = currentColor;
+
+}
