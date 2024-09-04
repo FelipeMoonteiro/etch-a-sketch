@@ -9,13 +9,19 @@ const colorPicker = document.getElementById('favcolor');
 colorPicker.addEventListener('input', function(){
     currentColor = String(colorPicker.value);
     console.log(currentColor);  
-    recreateGrid();
-})
 
-function recreateGrid() {
-    document.getElementById('container').innerHTML = "";
-    grid(inputGrid);
-}
+    const elements = document.getElementsByClassName('divD');
+    for (let i = 0; i < elements.length; i++) {
+        elements[i].removeEventListener('mouseover', noColor); 
+        elements[i].removeEventListener('mouseover', PickColor); 
+
+        if (currentColor === '#000000') {
+            elements[i].addEventListener('mouseover', noColor); 
+        } else {
+            elements[i].addEventListener('mouseover', PickColor); 
+        }
+    }
+});
 
 
 
@@ -103,4 +109,10 @@ document.getElementById("btn 3").addEventListener('click', clear);
 function PickColor(event){
     event.target.style.backgroundColor = currentColor;
 
+    const styles = window.getComputedStyle(event.target);
+    let boxOpacity = parseFloat(styles.getPropertyValue("opacity"));
+    boxOpacity += 0.3;
+    event.target.style.opacity = boxOpacity;
 }
+
+
