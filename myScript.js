@@ -6,6 +6,7 @@ function enter(){
     inputGrid = Math.floor(inputGrid);
     console.log(inputGrid);
     grid(inputGrid);
+
     
 
 }
@@ -15,6 +16,8 @@ document.getElementById("getNumber").addEventListener('keydown', function(event)
         enter();
     }
 });
+
+
 
 function grid(inputGrid){
         for(let i = 0; i < inputGrid; i++){
@@ -30,7 +33,15 @@ function grid(inputGrid){
             const newDiv = document.createElement("div");
             newDiv.className = "divD " + y;
             newRow.appendChild(newDiv);
+            newDiv.addEventListener("mouseover", changeColor);
         }
 
     }
 }     
+
+    function changeColor(event){
+        event.target.style.backgroundColor = "grey"; 
+    }
+
+
+
