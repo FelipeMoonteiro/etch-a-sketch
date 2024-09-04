@@ -16,7 +16,6 @@ document.getElementById("getNumber").addEventListener('keydown', function(event)
 });
 
 
-
 function grid(inputGrid){
         for(let i = 0; i < inputGrid; i++){
         const newRow = document.createElement("div");
@@ -30,7 +29,8 @@ function grid(inputGrid){
             const newDiv = document.createElement("div");
             newDiv.className = "divD " + y;
             newRow.appendChild(newDiv);
-            newDiv.addEventListener("mouseover", changeColor);
+            newDiv.addEventListener("mouseover", noColor);
+
         }
 
     }
@@ -48,6 +48,17 @@ function grid(inputGrid){
     event.target.style.backgroundColor = rgbColor;
     }
 
+ function noColor(event){
+    event.target.style.backgroundColor = "black";
+ }
+
+
+function rainbow(){
+    const elements = document.getElementsByClassName('divD');
     
+    for (let i = 0; i < elements.length; i++){
+        elements[i].addEventListener('mouseover', changeColor);
+    }
+}
 
 
