@@ -1,10 +1,11 @@
-
+let inputGrid = 30;
+grid(inputGrid);
 
 
 function enter(){
     let element = document.getElementById("container");
     element.innerHTML = "";
-    let inputGrid = document.getElementById("getNumber").value;
+    inputGrid = document.getElementById("getNumber").value;
     inputGrid = Math.floor(inputGrid);
     grid(inputGrid);
 }
