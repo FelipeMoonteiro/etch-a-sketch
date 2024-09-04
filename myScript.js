@@ -50,6 +50,10 @@ function grid(inputGrid){
 
  function noColor(event){
     event.target.style.backgroundColor = "black";
+    const styles = window.getComputedStyle(event.target);
+    let boxOpacity = parseFloat(styles.getPropertyValue("opacity"));
+    boxOpacity += 0.3;
+    event.target.style.opacity = boxOpacity;
  }
 
 
@@ -61,4 +65,12 @@ function rainbow(){
     }
 }
 
+function clear(){
+    const el = document.getElementsByClassName('divD');
 
+    for(let i = 0; i < el.length; i++){
+        el[i].style.backgroundColor = "white";
+    }
+}
+
+document.getElementById("btn 3").addEventListener('click', clear);
