@@ -1,14 +1,12 @@
 
+
+
 function enter(){
     let element = document.getElementById("container");
     element.innerHTML = "";
     let inputGrid = document.getElementById("getNumber").value;
     inputGrid = Math.floor(inputGrid);
-    console.log(inputGrid);
     grid(inputGrid);
-
-    
-
 }
 
 document.getElementById("getNumber").addEventListener('keydown', function(event) {
@@ -29,7 +27,6 @@ function grid(inputGrid){
 
 
         for(let y = 0; y < inputGrid; y++){
-            console.log("Entrou");
             const newDiv = document.createElement("div");
             newDiv.className = "divD " + y;
             newRow.appendChild(newDiv);
@@ -40,8 +37,17 @@ function grid(inputGrid){
 }     
 
     function changeColor(event){
-        event.target.style.backgroundColor = "grey"; 
+    let red, green, blue;
+
+    red = Math.floor(Math.random() * 256);
+    green = Math.floor(Math.random() * 256);
+    blue = Math.floor(Math.random() * 256);
+
+    const rgbColor = 'rgb(' + red + ',' + green + "," + blue + ')';
+
+    event.target.style.backgroundColor = rgbColor;
     }
 
+    
 
 

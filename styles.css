@@ -8,6 +8,9 @@
 
 #write-click{
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+
 }
 
 #container{
@@ -35,5 +38,12 @@ body{
     background-color: rgb(58, 58, 58);
 }
 
+#btn {
+    justify-content: center;
+    padding: 5px;
+    margin: 5px;
+}
 
-
+#getNumber {
+    padding: 5px;
+}
